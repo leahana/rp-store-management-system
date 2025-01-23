@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import Home from '@/views/home'
 </script>
 <template>
-  <home></home>
+  <router-view></router-view>
 </template>
-
-
 <style scoped>
 
 </style>

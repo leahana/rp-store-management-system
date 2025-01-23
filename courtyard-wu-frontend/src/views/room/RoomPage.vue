@@ -1,11 +1,12 @@
 <template>
-  1111
+  room
 </template>
 <script>
 export default {
   name: 'Room',
   data() {
     return {};
+
   },
   methods: {},
 

@@ -1,0 +1,32 @@
+/* 确保父级容器没有额外的空间*/
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box; /* 防止 padding 和 border 影响布局 */
+}
+
+:root {
+    --main-color: #333;
+    --secondary-color: #555;
+    --highlight-color: #ff6600;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--main-color);
+}
+
+/* 响应式布局规则*/
+
+@media (max-width: 768px) {
+    .posts {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .posts {
+        grid-template-columns: 1fr;
+    }
+}

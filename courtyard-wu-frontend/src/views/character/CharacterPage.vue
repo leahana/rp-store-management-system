@@ -1,5 +1,5 @@
 <template>
-哈哈哈哈
+  Character
 </template>
 
 <script>

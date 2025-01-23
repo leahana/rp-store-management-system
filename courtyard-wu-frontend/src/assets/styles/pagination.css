@@ -1,0 +1,7 @@
+/* 公共组件样式*/
+.pagination {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    margin-top: 20px; /* 可选，调整距离页面顶部的间距 */
+}

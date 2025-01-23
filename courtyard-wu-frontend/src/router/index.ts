@@ -1,28 +1,33 @@
-import {
-    createRouter, createWebHistory
-} from 'vue-router';
-import Home from '@/views/home'
-import Room from '@/views/room'
+import {createRouter, createWebHistory, type RouteRecordRaw} from 'vue-router';
 
-const routes = [
-    // 主页
+const routes: RouteRecordRaw = [
     {
-        path: "/",
-        name: "Home",
-        component: Home,
+        path: '/',
+        component: () => import('@/layouts/MainLayout.vue'), // 主布局
+        children: [
+            {
+                path: '', // 默认子路由
+                component: () => import('@/views/home/HomePage.vue'),
+            },
+            {
+                path: 'room',
+                component: () => import('@/views/room/RoomPage.vue'),
+            },
+            {
+                path: 'character',
+                component: () => import('@/views/character/CharacterPage.vue'),
+            },
+            {
+                path: 'join-us',
+                component: () => import('@/views/join/JoinUs.vue'),
+            },
+        ],
     },
-    // 房间
-    {
-        path: "/room",
-        name: "Room",
-        component: Room
-    }
-
 ];
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
 });
 
 export default router;
