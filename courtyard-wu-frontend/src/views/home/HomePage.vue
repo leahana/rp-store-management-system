@@ -32,7 +32,13 @@ import '@/assets/styles/pagination.css';
 export default {
   name: 'HomePage',
   setup() {
-    const {currentPosts, currentPage, postsPerPage, paginatedPosts, handlePageChange} = usePaginatedPost();
+    const {
+      currentPosts,
+      currentPage,
+      postsPerPage,
+      paginatedPosts,
+      handlePageChange
+    } = usePaginatedPost();
     return {
       currentPosts,
       currentPage,
@@ -49,19 +55,19 @@ export default {
 const usePaginatedPost = () => {
   const currentPosts = ref([
     {
-      id: 1,
+      id: '1',
       image: "http://localhost:8081/c516eedc-7da0-4612-8380-562c3471d84d-iShot_2025-01-20_11.02.10.png",
       title: '美丽风景',
       description: '这是一张美丽的风景照片。'
     },
-    {id: 2, image: '/assets/images/image2.jpg', title: '城市夜景', description: '都市的夜晚，光影交错。'},
-    {id: 3, image: '/assets/images/image3.jpg', title: '山脉与云海', description: '壮丽的山脉与迷雾中的云海。'},
-    {id: 4, image: '/assets/images/image4.jpg', title: '海边日落', description: '宁静的海滩与日落景色。'},
-    {id: 5, image: '/assets/images/image5.jpg', title: '森林晨雾', description: '清晨的森林被薄雾笼罩。'},
-    {id: 6, image: '/assets/images/image6.jpg', title: '雪山与湖泊', description: '雪山映衬下的湖泊景色。'},
-    {id: 7, image: '/assets/images/image7.jpg', title: '夜空星轨', description: '长曝光下的星空轨迹。'},
-    {id: 8, image: '/assets/images/image8.jpg', title: '城市街头', description: '繁忙的都市街头景象。'},
-    {id: 9, image: '/assets/images/image9.jpg', title: '沙漠风光', description: '无尽沙丘与烈日下的沙漠景观。'}
+    {id: '2', image: '/assets/images/image2.jpg', title: '城市夜景', description: '都市的夜晚，光影交错。'},
+    {id: '3', image: '/assets/images/image3.jpg', title: '山脉与云海', description: '壮丽的山脉与迷雾中的云海。'},
+    {id: '4', image: '/assets/images/image4.jpg', title: '海边日落', description: '宁静的海滩与日落景色。'},
+    {id: '5', image: '/assets/images/image5.jpg', title: '森林晨雾', description: '清晨的森林被薄雾笼罩。'},
+    {id: '6', image: '/assets/images/image6.jpg', title: '雪山与湖泊', description: '雪山映衬下的湖泊景色。'},
+    {id: '7', image: '/assets/images/image7.jpg', title: '夜空星轨', description: '长曝光下的星空轨迹。'},
+    {id: '8', image: '/assets/images/image8.jpg', title: '城市街头', description: '繁忙的都市街头景象。'},
+    {id: '9', image: '/assets/images/image9.jpg', title: '沙漠风光', description: '无尽沙丘与烈日下的沙漠景观。'}
   ]);
   const currentPage = ref(1);
   const postsPerPage = 9;
@@ -73,13 +79,13 @@ const usePaginatedPost = () => {
     return currentPosts.value.slice(start, end);
   });
 
-  const handlePageChange = (page) => {
+  const handlePageChange = (page: number) => {
     currentPage.value = page;
   };
 
   return {currentPosts, currentPage, postsPerPage, paginatedPosts, handlePageChange}
 }
-const goToPost = (postId) => {
+const goToPost = (postId: string) => {
   console.log("goToPost() postId=", postId)
 };
 

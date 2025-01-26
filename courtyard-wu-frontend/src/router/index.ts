@@ -1,6 +1,6 @@
-import {createRouter, createWebHistory, type RouteRecordRaw} from 'vue-router';
+import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router';
 
-const routes: RouteRecordRaw = [
+const routes: RouteRecordRaw[] = [
     {
         path: '/',
         component: () => import('@/layouts/MainLayout.vue'), // 主布局
@@ -12,6 +12,11 @@ const routes: RouteRecordRaw = [
             {
                 path: 'room',
                 component: () => import('@/views/room/RoomPage.vue'),
+            },
+            {
+                path: '/room-management',
+                name: 'RoomManagement',
+                component: () => import('@/views/room/RoomManagement.vue'),
             },
             {
                 path: 'character',

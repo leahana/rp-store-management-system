@@ -1,4 +1,5 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, {AxiosInstance, InternalAxiosRequestConfig, AxiosRequestHeaders,AxiosResponse} from 'axios';
+
 
 // 创建 axios 实例
 const request: AxiosInstance = axios.create({
@@ -6,12 +7,15 @@ const request: AxiosInstance = axios.create({
     timeout: 5000, // 设置请求超时
 });
 
-// 请求拦截器：可以在请求发送之前做一些处理
+// 请求拦截器
 request.interceptors.request.use(
-    (config: AxiosRequestConfig) => {
-        // 在这里添加 token 或其他请求头
+    (config: InternalAxiosRequestConfig) => {
         const token = localStorage.getItem('token');
         if (token) {
+            // 检查 headers 是否为 undefined，如果是，就赋一个空对象
+            if (!config.headers) {
+                config.headers = {} as AxiosRequestHeaders;
+            }
             config.headers['Authorization'] = `Bearer ${token}`;
         }
         return config;

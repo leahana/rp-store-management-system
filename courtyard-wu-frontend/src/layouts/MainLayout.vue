@@ -18,8 +18,9 @@
         </el-menu-item>
         <el-menu-item index="1">包间</el-menu-item>
         <el-menu-item index="2">人物</el-menu-item>
-        <el-menu-item index="3" disabled>qq群</el-menu-item>
-        <el-menu-item index="4">加入我们</el-menu-item>
+        <el-menu-item index="3" @click="joinQQGroup()">qq群</el-menu-item>
+        <el-menu-item index="4" disabled>加入我们</el-menu-item>
+        <el-menu-item index="5">房间管理</el-menu-item>
       </el-menu>
     </div>
     <!-- Slot for main content -->
@@ -36,9 +37,9 @@ import {useRouter} from "vue-router";
 export default defineComponent({
   name: 'MainLayout',
   setup() {
-    const {activeIndex, handleSelect,returnHomePage} = usePushRouter()
+    const {activeIndex, handleSelect, returnHomePage, goTo} = usePushRouter()
     return {
-      activeIndex, handleSelect, returnHomePage
+      activeIndex, handleSelect, returnHomePage, goTo, joinQQGroup
     };
 
 
@@ -50,7 +51,10 @@ export default defineComponent({
   },
 
 });
-
+const joinQQGroup = () => {
+  const qqGroupUrl = 'https://jq.qq.com/?_wv=1027&k=xxxxxxx'; // 替换为你的QQ群链接
+  window.open(qqGroupUrl, '_blank');
+}
 
 const usePushRouter = () => {
   const router = useRouter();
@@ -71,6 +75,9 @@ const usePushRouter = () => {
       case '4':
         router.push('/join-us');
         break;
+      case '5':
+        router.push("/room-management");
+        break;
       default:
         router.push('/');
     }
@@ -78,7 +85,10 @@ const usePushRouter = () => {
   const returnHomePage = () => {
     router.push("/")
   }
-  return {activeIndex, handleSelect,returnHomePage};
+  const goTo = (routeName) => {
+    router.push({name: routeName})
+  }
+  return {activeIndex, handleSelect, returnHomePage, goTo};
 
 }
 </script>
