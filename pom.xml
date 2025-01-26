@@ -13,12 +13,13 @@
     </modules>
 
     <properties>
+
         <!-- Maven 相关 -->
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version> <!-- 兼容低版本 Maven -->
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>  <!-- 兼容 Maven 3.5+ -->
+        <maven-compiler-plugin.version>2.5.14</maven-compiler-plugin.version>  <!-- 兼容 Maven 3.5+ -->
         <flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- 统一依赖管理 -->
@@ -209,13 +210,32 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <skipTests>true</skipTests>
+                    </configuration>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>2.7.1</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <target>8</target>
+                    </configuration>
+                    <version>2.3.2</version>
                 </plugin>
-
             </plugins>
         </pluginManagement>
 

@@ -145,7 +145,6 @@
 
     </dependencies>
     <build>
-        <pluginManagement>
             <plugins>
                 <!-- maven-surefire-plugin 插件，用于运行单元测试。 -->
                 <!-- 注意，需要使用 3.0.X+，因为要支持 Junit 5 版本 -->
@@ -154,14 +153,25 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
                 </plugin>
-
             </plugins>
-        </pluginManagement>
+
+
 
     </build>
 
